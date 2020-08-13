@@ -6,6 +6,7 @@
 
 import logging
 
+from losup.common import LOSDevice
 from losup.util.utils import add_one
 
 RUN_LOG = logging.getLogger("run_log")
@@ -18,5 +19,6 @@ logging.getLogger("filelock").setLevel(logging.WARNING)
 
 def main() -> None:
     """main function"""
+    LOSDevice()
     RUN_LOG.warning(add_one(2))
     RUN_LOG.error("foo")
