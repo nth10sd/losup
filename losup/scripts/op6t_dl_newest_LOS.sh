@@ -1,6 +1,6 @@
 #! /bin/bash -e
 echo;
-echo "Sample usage: <script> <datestamp of LineageOS/OpenGApps build> <Magisk version>";
+echo "Sample usage: <script> <datestamp of LineageOS build> <datestamp of OpenGApps build>";
 echo 'Make sure to have run "pkg install aria2 perl tsu" beforehand!';
 echo "Press any key once all aria2c commands finish!";
 echo;
@@ -11,10 +11,10 @@ echo "Downloading files...";
 pushd $HOME;
 aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/fajita/$1/lineage-17.1-$1-nightly-fajita-signed.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$1/open_gapps-arm64-10.0-nano-$1.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$1/open_gapps-arm64-10.0-nano-$1.zip.md5 \
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
     https://downloads.sourceforge.net/project/mauronofrio-twrp/Fajita/twrp-3.3.1-32-fajita-installer-mauronofrio.zip \
-    https://github.com/topjohnwu/Magisk/releases/download/v$2/Magisk-v$2.zip;
+    https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip;
 popd;
 echo "Press any key once all aria2c instances have completed successfully, else press Ctrl-C to abort.";
 read;
@@ -22,8 +22,8 @@ read;
 # Set variable names
 LOS_FILENAME="lineage-17.1-$1-nightly-fajita-signed";
 TWRP_FILENAME="twrp-3.3.1-32-fajita-installer-mauronofrio";
-OGA_FILENAME="open_gapps-arm64-10.0-nano-$1";
-MAG_FILENAME="Magisk-v$2";
+OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
+MAG_FILENAME="Magisk-v20.4";
 
 echo "Verifying checksums...";
 aria2c https://mirrorbits.lineageos.org/full/fajita/$1/lineage-17.1-$1-nightly-fajita-signed.zip?sha256
@@ -62,4 +62,3 @@ echo "Boot to recovery, flash the new Lineage OS file, then TWRP...";
 echo "Reboot into recovery again, flash Open GApps and Magisk yet again...";
 echo "Reboot into system. No need to wipe any caches.";
 echo "Remember to make backups, good luck!";
-
