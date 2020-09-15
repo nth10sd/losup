@@ -2,7 +2,7 @@
 echo;
 echo "This script is for OnePlus 3T.";
 echo;
-echo "Sample usage: <script> <datestamp of LineageOS/OpenGApps build> <Magisk version>";
+echo "Sample usage: <script> <datestamp of LineageOS build> <datestamp of OpenGApps build>";
 echo 'Make sure to have run "pkg install aria2 perl tsu" beforehand!';
 echo 'OP3T: Make sure to have downloaded https://dl.twrp.me/oneplus3/twrp-3.4.0-0-oneplus3.img beforehand!';
 echo "Press any key once all aria2c commands finish!";
@@ -15,9 +15,9 @@ pushd $HOME;
 # TWRP redirects break downloading from TWRP. Just download into $HOME beforehand
 aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$1/open_gapps-arm64-10.0-nano-$1.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$1/open_gapps-arm64-10.0-nano-$1.zip.md5 \
-    https://github.com/topjohnwu/Magisk/releases/download/v$2/Magisk-v$2.zip;
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
+    https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip;
 popd;
 echo "Press any key once all aria2c instances have completed successfully, else press Ctrl-C to abort.";
 read;
@@ -25,8 +25,8 @@ read;
 # Set variable names
 LOS_FILENAME="lineage-17.1-$1-nightly-oneplus3-signed";
 TWRP_FILENAME="twrp-3.4.0-0-oneplus3";
-OGA_FILENAME="open_gapps-arm64-10.0-nano-$1";
-MAG_FILENAME="Magisk-v$2";
+OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
+MAG_FILENAME="Magisk-v20.4";
 
 echo "Verifying checksums...";
 aria2c https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip?sha256
