@@ -17,7 +17,7 @@ aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
-    https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip;
+    https://github.com/topjohnwu/Magisk/releases/download/v21.1/Magisk-v21.1.zip;
 popd;
 echo "Press any key once all aria2c instances have completed successfully, else press Ctrl-C to abort.";
 read;
@@ -26,7 +26,7 @@ read;
 LOS_FILENAME="lineage-17.1-$1-nightly-oneplus3-signed";
 TWRP_FILENAME="twrp-3.4.0-0-oneplus3";
 OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
-MAG_FILENAME="Magisk-v20.4";
+MAG_FILENAME="Magisk-v21.1";
 
 echo "Verifying checksums...";
 aria2c https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip?sha256
@@ -34,7 +34,7 @@ shasum -c $HOME/$LOS_FILENAME.1.zip;  # Not a zip file, it is the SHA256 hash
 aria2c https://dl.twrp.me/oneplus3/twrp-3.4.0-0-oneplus3.img.sha256
 shasum -c $HOME/$TWRP_FILENAME.img.sha256;
 md5sum -c $HOME/$OGA_FILENAME.zip.md5;
-echo "5795228296ab3e84cda196e9d526c9b8556dcbf5119866e0d712940ceed1f422 *$MAG_FILENAME.zip" > $HOME/$MAG_FILENAME.zip.sha256;
+echo "17fb6fe1469b2cb73eff8ae624a744f36b029d75aebc4afcffb6f59e0ed6e1f5 *$MAG_FILENAME.zip" > $HOME/$MAG_FILENAME.zip.sha256;
 shasum -c $HOME/$MAG_FILENAME.zip.sha256;
 
 echo "Removing checksum files...";
