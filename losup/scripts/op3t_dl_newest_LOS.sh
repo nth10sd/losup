@@ -32,7 +32,7 @@ echo "Verifying checksums...";
 aria2c https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip?sha256
 shasum -c $HOME/$LOS_FILENAME.1.zip;  # Not a zip file, it is the SHA256 hash
 aria2c https://dl.twrp.me/oneplus3/twrp-3.4.0-0-oneplus3.img.sha256
-shasum -c $HOME/$TWRP_FILENAME.img.sha256;
+sudo shasum -c $HOME/$TWRP_FILENAME.img.sha256;
 md5sum -c $HOME/$OGA_FILENAME.zip.md5;
 echo "17fb6fe1469b2cb73eff8ae624a744f36b029d75aebc4afcffb6f59e0ed6e1f5 *$MAG_FILENAME.zip" > $HOME/$MAG_FILENAME.zip.sha256;
 shasum -c $HOME/$MAG_FILENAME.zip.sha256;
