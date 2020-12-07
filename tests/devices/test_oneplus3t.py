@@ -2,10 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-"""Module details."""
+"""Tests for oneplus3t.py"""
 
-__title__ = "REPLACEME"
-__version__ = "0.0.1"
-__author__ = "REPLACEME"
-__license__ = "MPL 2.0"
-__copyright__ = "Copyright 2020 REPLACEME"
+from losup.devices.oneplus3t import OP3T
+
+
+def test_op3t() -> None:
+    """Test the OP3T class."""
+    assert OP3T()
