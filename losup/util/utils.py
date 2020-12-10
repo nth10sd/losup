@@ -4,6 +4,8 @@
 
 """Place utility functions here."""
 
+from __future__ import annotations
+
 import logging
 
 RUN_LOG = logging.getLogger("run_log")

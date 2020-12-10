@@ -4,6 +4,8 @@
 
 """Tests for common.py"""
 
+from __future__ import annotations
+
 from losup.common import LOSDevice
 
 

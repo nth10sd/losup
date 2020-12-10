@@ -4,6 +4,8 @@
 
 """Tests for oneplus6t.py"""
 
+from __future__ import annotations
+
 from losup.devices.oneplus6t import OP6T
 
 
