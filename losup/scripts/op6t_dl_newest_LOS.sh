@@ -14,7 +14,7 @@ aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
     https://downloads.sourceforge.net/project/mauronofrio-twrp/Fajita/twrp-3.3.1-32-fajita-installer-mauronofrio.zip \
-    https://github.com/topjohnwu/Magisk/releases/download/v21.1/Magisk-v21.1.zip;
+    https://github.com/topjohnwu/Magisk/releases/download/v21.2/Magisk-v21.2.zip;
 popd;
 echo "Press any key once all aria2c instances have completed successfully, else press Ctrl-C to abort.";
 read;
@@ -23,7 +23,7 @@ read;
 LOS_FILENAME="lineage-17.1-$1-nightly-fajita-signed";
 TWRP_FILENAME="twrp-3.3.1-32-fajita-installer-mauronofrio";
 OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
-MAG_FILENAME="Magisk-v21.1";
+MAG_FILENAME="Magisk-v21.2";
 
 echo "Verifying checksums...";
 aria2c https://mirrorbits.lineageos.org/full/fajita/$1/lineage-17.1-$1-nightly-fajita-signed.zip?sha256
@@ -31,7 +31,7 @@ shasum -c $HOME/$LOS_FILENAME.1.zip;  # Not a zip file, it is the SHA256 hash
 echo "e6c36b0a9ddc092e03038e5a4178ed8ce2206089e1d1067b0b0af10ba51ccfa2 *$TWRP_FILENAME.zip" > $HOME/$TWRP_FILENAME.zip.sha256;
 shasum -c $HOME/$TWRP_FILENAME.zip.sha256;
 md5sum -c $HOME/$OGA_FILENAME.zip.md5;
-echo "17fb6fe1469b2cb73eff8ae624a744f36b029d75aebc4afcffb6f59e0ed6e1f5 *$MAG_FILENAME.zip" > $HOME/$MAG_FILENAME.zip.sha256;
+echo "6882f330e35140e667e7dba690a4ec014f8404fa5036d03fef15b060f111380b *$MAG_FILENAME.zip" > $HOME/$MAG_FILENAME.zip.sha256;
 shasum -c $HOME/$MAG_FILENAME.zip.sha256;
 
 echo "Removing checksum files...";
