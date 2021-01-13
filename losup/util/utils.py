@@ -6,15 +6,6 @@
 
 from __future__ import annotations
 
-import logging
-
-RUN_LOG = logging.getLogger("run_log")
-logging.basicConfig(
-    format="%(asctime)s %(name)-8s %(levelname)-8s {%(module)s} [%(funcName)s] %(message)s",
-    datefmt="%m-%d %H:%M:%S", level=logging.INFO,
-)
-logging.getLogger("flake8").setLevel(logging.ERROR)
-
 
 def add_one(inp: int) -> int:
     """Returns input added one.
