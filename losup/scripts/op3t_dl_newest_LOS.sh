@@ -58,7 +58,7 @@ echo "Moving files...";
 sudo mv $HOME/$LOS_FILENAME.zip /sdcard/;
 sudo mv $HOME/$TWRP_FILENAME.img /sdcard/;
 sudo mv $HOME/$OGA_FILENAME.zip /sdcard/;
-sudo mv $HOME/$MAG_FILENAME.apk /sdcard/;
+sudo mv $HOME/$MAG_FILENAME.apk /sdcard/$MAG_FILENAME.zip;
 
 echo "Script completed!";
 echo "Boot to recovery, flash the new Lineage OS file, then TWRP...";
