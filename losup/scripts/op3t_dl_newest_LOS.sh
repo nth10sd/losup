@@ -26,7 +26,7 @@ read;
 LOS_FILENAME="lineage-17.1-$1-nightly-oneplus3-signed";
 TWRP_FILENAME="twrp-3.4.0-0-oneplus3";
 OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
-MAG_FILENAME=apkgisk-v22.0";
+MAG_FILENAME="Magisk-v22.0";
 
 echo "Verifying checksums...";
 aria2c https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip?sha256
