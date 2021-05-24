@@ -11,13 +11,14 @@ on:
 jobs:
   build:
 
-    # runs-on: ${{ matrix.operating-system }}
+    runs-on: ${{ matrix.operating-system }}
     # Fixate to exact OS versions to avoid potential test failures over time
-    runs-on: ubuntu-20.04
+    # Uncomment this line if we are running on a solitary OS
+    # runs-on: ubuntu-20.04
     strategy:
       matrix:
         # Uncomment this line if we are running on multiple operating systems
-        # operating-system: [ubuntu-20.04, macos-10.15, windows-2019]
+        operating-system: [ubuntu-20.04, macos-10.15, windows-2019]
         python-version: [3.9]
 
     steps:
@@ -35,24 +36,20 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-    # When activating macOS, verify pip cache dir at
-    #     https://github.com/actions/cache/blob/main/examples.md
-    # - uses: actions/cache@v2
-    #   if: startsWith(runner.os, 'macOS')
-    #   with:
-    #     path: ~/Library/Caches/pip
-    #     key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-pip-
-    # When activating Windows, verify pip cache dir at
-    #     https://github.com/actions/cache/blob/main/examples.md
-    # - uses: actions/cache@v2
-    #   if: startsWith(runner.os, 'Windows')
-    #   with:
-    #     path: ~\AppData\Local\pip\Cache
-    #     key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-pip-
+    - uses: actions/cache@v2
+      if: startsWith(runner.os, 'macOS')
+      with:
+        path: ~/Library/Caches/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - uses: actions/cache@v2
+      if: startsWith(runner.os, 'Windows')
+      with:
+        path: ~\AppData\Local\pip\Cache
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
     - name: Get pip cache dir
       id: pip-cache
       run: |
@@ -66,12 +63,15 @@ jobs:
           ${{ runner.os }}-pip-
 
     - name: Install OS prerequisites
+      if: startsWith(runner.os, 'Linux')
       run: sudo apt-get install ripgrep
     - name: Search for existing linter ignore lines in Python
+      if: startsWith(runner.os, 'Linux')
       run: |
         rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any|REPLACEME)" \
           $(find . -type f -name "*.py" ! -name "conf_correct.py") || true
     - name: Ensure we are not increasing the number of ignore lines as a guideline
+      if: startsWith(runner.os, 'Linux')
       run: |
         if [ $(rg -t py --stats \
                   "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any|REPLACEME)" \
@@ -83,16 +83,21 @@ jobs:
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        python -u -m pip install --upgrade pip setuptools wheel
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        python -u -m pip install --upgrade pip setuptools wheel pyupgrade_directories
+        pip install -r requirements.txt
 
     - name: Run with flake8 only checking for Python syntax errors or undefined names
       run: |
         # stop the build if there are Python syntax errors or undefined names
         python -u -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    - name: Run with pyupgrade to find code that can be written in a more modern way
+      run: pyup_dirs --py39-plus --recursive .
     - name: Run with vulture to find dead code
       run: python -u -m vulture losup/ tests/ .vulture_allowlist
     - name: Run tools using pytest, and also non-slow tests under code coverage
       run: |
-        python -u -m pytest --black --flake8 --mypy --pylint -m "not slow" \
-          --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=80
+        python -u -m pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=80
+
+    - uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true # optional (default = false)
