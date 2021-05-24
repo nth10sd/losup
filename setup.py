@@ -73,7 +73,7 @@ setup(
         # "<dependency>",
     ],
     extras_require=EXTRAS,
-    python_requires=">=3.8",
+    python_requires=">=3.9",
     zip_safe=False,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
@@ -84,7 +84,7 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Software Development :: Testing",
         "Topic :: Utilities",
