@@ -19,4 +19,4 @@ Run within Termux in Lineage OS.
 
 # Compatibility
 
-Compatible with Python 3.8+.
+Compatible with Python 3.9+.
