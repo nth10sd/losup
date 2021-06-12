@@ -71,7 +71,7 @@ setup(
     # package_data={MODULE_NAME: [
     #     "<relative path to non-Python files>/*",
     # ]},
-    install_requires=[
+    install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
         # "<dependency>",
     ],
     extras_require=EXTRAS,
