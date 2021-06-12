@@ -36,7 +36,7 @@ exclude_lines = [
     "if 0:",  # Ignore non-runnable code not being run
     "if __name__ == .__main__.:",  # Ignore non-runnable code not being run
 ]
-fail_under = 10
+fail_under = 80  # Minimum code coverage percent
 show_missing = true
 
 [tool.isort]
