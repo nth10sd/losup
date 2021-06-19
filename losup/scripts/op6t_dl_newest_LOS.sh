@@ -10,7 +10,7 @@ read;
 echo "Downloading files...";
 pushd $HOME;
 aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
-    https://mirrorbits.lineageos.org/full/fajita/$1/lineage-17.1-$1-nightly-fajita-signed.zip \
+    https://mirrorbits.lineageos.org/full/fajita/$1/lineage-18.1-$1-nightly-fajita-signed.zip \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
     https://downloads.sourceforge.net/project/mauronofrio-twrp/Fajita/twrp-3.3.1-32-fajita-installer-mauronofrio.zip \
@@ -20,13 +20,13 @@ echo "Press any key once all aria2c instances have completed successfully, else 
 read;
 
 # Set variable names
-LOS_FILENAME="lineage-17.1-$1-nightly-fajita-signed";
+LOS_FILENAME="lineage-18.1-$1-nightly-fajita-signed";
 TWRP_FILENAME="twrp-3.3.1-32-fajita-installer-mauronofrio";
 OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
 MAG_FILENAME="Magisk-v23.0";
 
 echo "Verifying checksums...";
-aria2c https://mirrorbits.lineageos.org/full/fajita/$1/lineage-17.1-$1-nightly-fajita-signed.zip?sha256
+aria2c https://mirrorbits.lineageos.org/full/fajita/$1/lineage-18.1-$1-nightly-fajita-signed.zip?sha256
 shasum -c $HOME/$LOS_FILENAME.1.zip;  # Not a zip file, it is the SHA256 hash
 echo "e6c36b0a9ddc092e03038e5a4178ed8ce2206089e1d1067b0b0af10ba51ccfa2 *$TWRP_FILENAME.zip" > $HOME/$TWRP_FILENAME.zip.sha256;
 shasum -c $HOME/$TWRP_FILENAME.zip.sha256;
