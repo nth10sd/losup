@@ -11,8 +11,8 @@ echo "Downloading files...";
 pushd $HOME;
 aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/fajita/$1/lineage-18.1-$1-nightly-fajita-signed.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-11.0-nano-$2.zip \
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-11.0-nano-$2.zip.md5 \
     https://downloads.sourceforge.net/project/mauronofrio-twrp/Fajita/twrp-3.3.1-32-fajita-installer-mauronofrio.zip \
     https://github.com/topjohnwu/Magisk/releases/download/v23.0/Magisk-v23.0.apk
 popd;
@@ -22,7 +22,7 @@ read;
 # Set variable names
 LOS_FILENAME="lineage-18.1-$1-nightly-fajita-signed";
 TWRP_FILENAME="twrp-3.3.1-32-fajita-installer-mauronofrio";
-OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
+OGA_FILENAME="open_gapps-arm64-11.0-nano-$2";
 MAG_FILENAME="Magisk-v23.0";
 
 echo "Verifying checksums...";
