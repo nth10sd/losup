@@ -14,7 +14,7 @@ echo "Downloading files...";
 pushd $HOME;
 # TWRP redirects break downloading from TWRP. Just download into $HOME beforehand
 aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
-    https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip \
+    https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-18.1-$1-nightly-oneplus3-signed.zip \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
     https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
     https://github.com/topjohnwu/Magisk/releases/download/v23.0/Magisk-v23.0.apk;
@@ -23,13 +23,13 @@ echo "Press any key once all aria2c instances have completed successfully, else 
 read;
 
 # Set variable names
-LOS_FILENAME="lineage-17.1-$1-nightly-oneplus3-signed";
+LOS_FILENAME="lineage-18.1-$1-nightly-oneplus3-signed";
 TWRP_FILENAME="twrp-3.4.0-0-oneplus3";
 OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
 MAG_FILENAME="Magisk-v23.0";
 
 echo "Verifying checksums...";
-aria2c https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-17.1-$1-nightly-oneplus3-signed.zip?sha256
+aria2c https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-18.1-$1-nightly-oneplus3-signed.zip?sha256
 shasum -c $HOME/$LOS_FILENAME.1.zip;  # Not a zip file, it is the SHA256 hash
 aria2c https://dl.twrp.me/oneplus3/twrp-3.4.0-0-oneplus3.img.sha256
 sudo shasum -c $HOME/$TWRP_FILENAME.img.sha256;
