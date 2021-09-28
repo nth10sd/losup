@@ -15,8 +15,8 @@ pushd $HOME;
 # TWRP redirects break downloading from TWRP. Just download into $HOME beforehand
 aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-18.1-$1-nightly-oneplus3-signed.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip \
-    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-10.0-nano-$2.zip.md5 \
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-11.0-nano-$2.zip \
+    https://downloads.sourceforge.net/project/opengapps/arm64/$2/open_gapps-arm64-11.0-nano-$2.zip.md5 \
     https://github.com/topjohnwu/Magisk/releases/download/v23.0/Magisk-v23.0.apk;
 popd;
 echo "Press any key once all aria2c instances have completed successfully, else press Ctrl-C to abort.";
@@ -25,7 +25,7 @@ read;
 # Set variable names
 LOS_FILENAME="lineage-18.1-$1-nightly-oneplus3-signed";
 TWRP_FILENAME="twrp-3.4.0-0-oneplus3";
-OGA_FILENAME="open_gapps-arm64-10.0-nano-$2";
+OGA_FILENAME="open_gapps-arm64-11.0-nano-$2";
 MAG_FILENAME="Magisk-v23.0";
 
 echo "Verifying checksums...";
