@@ -83,7 +83,7 @@ setup(
         "types-toml ~= 0.10.1",  # Temporarily for infrastructure stuff of some packages
     ],
     extras_require=EXTRAS,
-    python_requires=">=3.9",
+    python_requires=">=3.10",
     zip_safe=False,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
@@ -94,7 +94,7 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Software Development :: Testing",
         "Topic :: Utilities",
