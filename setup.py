@@ -79,7 +79,7 @@ setup(
     #     "<relative path to non-Python files>/*",
     # ]},
     install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
-        "types-setuptools ~= 57.4.0",
+        "types-setuptools ~= 57.4.2",
         "types-toml ~= 0.10.1",  # Temporarily for infrastructure stuff of some packages
     ],
     extras_require=EXTRAS,
