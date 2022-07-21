@@ -13,7 +13,7 @@ read;
 echo "Downloading files...";
 pushd $HOME;
 # TWRP redirects break downloading from TWRP. Just download into $HOME beforehand
-aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
+aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-18.1-$1-nightly-oneplus3-signed.zip;
 popd;
 echo "Press any key once all aria2c instances have completed successfully, else press Ctrl-C to abort.";

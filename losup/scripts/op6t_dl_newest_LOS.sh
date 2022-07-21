@@ -11,7 +11,7 @@ echo;
 read;
 echo "Downloading files...";
 pushd $HOME;
-aria2c --force-sequential=true --max-connection-per-server=5 --split=10 \
+aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/fajita/$1/lineage-19.1-$1-nightly-fajita-signed.zip \
     https://dl.twrp.me/fajita/twrp-installer-3.6.2_9-0-fajita.zip;
 popd;
