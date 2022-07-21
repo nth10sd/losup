@@ -12,8 +12,7 @@ read;
 echo "Downloading files...";
 pushd $HOME;
 aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
-    https://mirrorbits.lineageos.org/full/fajita/$1/lineage-19.1-$1-nightly-fajita-signed.zip \
-    https://dl.twrp.me/fajita/twrp-installer-3.6.2_9-0-fajita.zip;
+    https://mirrorbits.lineageos.org/full/fajita/$1/lineage-19.1-$1-nightly-fajita-signed.zip;
 popd;
 echo "Press any key once all aria2c instances have completed successfully, else press Ctrl-C to abort.";
 read;
@@ -22,10 +21,13 @@ read;
 LOS_FILENAME="lineage-19.1-$1-nightly-fajita-signed";
 TWRP_FILENAME="twrp-installer-3.6.2_9-0-fajita";
 
-echo "Verifying checksums...";
-aria2c https://mirrorbits.lineageos.org/full/fajita/$1/lineage-19.1-$1-nightly-fajita-signed.zip?sha256
+echo "Downloading TWRP and verifying checksums...";
+aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
+    https://mirrorbits.lineageos.org/full/fajita/$1/lineage-19.1-$1-nightly-fajita-signed.zip?sha256;
 shasum -c $HOME/$LOS_FILENAME.1.zip;  # Not a zip file, it is the SHA256 hash
-echo "b88383ab79f4e7d31e58ed44f5bdcfe3f7ab1639f87188b514af315c794de8af *$TWRP_FILENAME.zip" > $HOME/$TWRP_FILENAME.zip.sha256;
+aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
+    https://dl.twrp.me/fajita/$TWRP_FILENAME.zip \
+    https://dl.twrp.me/fajita/$TWRP_FILENAME.zip.sha256;
 shasum -c $HOME/$TWRP_FILENAME.zip.sha256;
 
 echo "Removing checksum files...";

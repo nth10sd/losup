@@ -4,7 +4,6 @@ echo "This script is for OnePlus 3T.";
 echo;
 echo "Sample usage: <script> <datestamp of LineageOS build>";
 echo 'Make sure to have run "pkg install -y aria2 perl tsu" beforehand!';
-echo 'OP3T: Make sure to have downloaded https://dl.twrp.me/oneplus3/twrp-3.4.0-0-oneplus3.img beforehand!';
 echo "Press any key once all aria2c commands finish!";
 echo;
 echo "Press any key once you have read the above...";
@@ -12,7 +11,6 @@ echo;
 read;
 echo "Downloading files...";
 pushd $HOME;
-# TWRP redirects break downloading from TWRP. Just download into $HOME beforehand
 aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
     https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-18.1-$1-nightly-oneplus3-signed.zip;
 popd;
@@ -21,13 +19,16 @@ read;
 
 # Set variable names
 LOS_FILENAME="lineage-18.1-$1-nightly-oneplus3-signed";
-TWRP_FILENAME="twrp-3.4.0-0-oneplus3";
+TWRP_FILENAME="twrp-3.6.2_9-0-oneplus3";
 
-echo "Verifying checksums...";
-aria2c https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-18.1-$1-nightly-oneplus3-signed.zip?sha256
+echo "Downloading TWRP and verifying checksums...";
+aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
+    https://mirrorbits.lineageos.org/full/oneplus3/$1/lineage-18.1-$1-nightly-oneplus3-signed.zip?sha256;
 shasum -c $HOME/$LOS_FILENAME.1.zip;  # Not a zip file, it is the SHA256 hash
-aria2c https://dl.twrp.me/oneplus3/twrp-3.4.0-0-oneplus3.img.sha256
-sudo shasum -c $HOME/$TWRP_FILENAME.img.sha256;
+aria2c --referer=* --force-sequential=true --max-connection-per-server=5 --split=10 \
+    https://dl.twrp.me/oneplus3/$TWRP_FILENAME.img \
+    https://dl.twrp.me/oneplus3/$TWRP_FILENAME.img.sha256;
+shasum -c $HOME/$TWRP_FILENAME.img.sha256;
 
 echo "Removing checksum files...";
 rm $HOME/$LOS_FILENAME.1.zip $HOME/$TWRP_FILENAME.img.sha256;
