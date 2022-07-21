@@ -61,7 +61,11 @@ sudo mv $HOME/$OGA_FILENAME.zip /sdcard/;
 sudo mv $HOME/$MAG_FILENAME.apk /sdcard/$MAG_FILENAME.zip;
 
 echo "Script completed!";
+echo "DO NOT use Open GApps and Magisk, download MindTheGapps and Magisk separately...";
 echo "Boot to recovery, flash the new Lineage OS file, then TWRP...";
-echo "Reboot into recovery again, flash Open GApps and Magisk yet again...";
+echo "Reboot into recovery again, flash MindTheGapps...";
 echo "Reboot into system. No need to wipe any caches.";
+echo "Install Magisk and FoxMagiskModuleManager, activate zygisk and denylist, reboot";
+echo "Install safetynet-fix from kdrag0n, Shamiko from LSPosed, both on GitHub";
+echo "Install Energized Protection, use blu with regional and social extensions";
 echo "Remember to make backups, good luck!";
