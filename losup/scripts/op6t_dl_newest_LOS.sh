@@ -1,7 +1,9 @@
 #! /bin/bash -e
 echo;
+echo "This script is for OnePlus 6T.";
+echo;
 echo "Sample usage: <script> <datestamp of LineageOS build>";
-echo 'Make sure to have run "pkg install aria2 perl tsu" beforehand!';
+echo 'Make sure to have run "pkg install -y aria2 perl tsu" beforehand!';
 echo "Press any key once all aria2c commands finish!";
 echo;
 echo "Press any key once you have read the above...";

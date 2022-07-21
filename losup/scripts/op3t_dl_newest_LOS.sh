@@ -3,7 +3,7 @@ echo;
 echo "This script is for OnePlus 3T.";
 echo;
 echo "Sample usage: <script> <datestamp of LineageOS build>";
-echo 'Make sure to have run "pkg install aria2 perl tsu" beforehand!';
+echo 'Make sure to have run "pkg install -y aria2 perl tsu" beforehand!';
 echo 'OP3T: Make sure to have downloaded https://dl.twrp.me/oneplus3/twrp-3.4.0-0-oneplus3.img beforehand!';
 echo "Press any key once all aria2c commands finish!";
 echo;
